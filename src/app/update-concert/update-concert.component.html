@@ -1,0 +1,35 @@
+<div class="container">
+    <div>
+        <h2>Modifier un concert :</h2>
+    </div>
+    <form >
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >ID concert</label>
+            <input readonly type="text" [(ngModel)]="currentconcert.idconcert" name="idconcert" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Nom concert</label>
+            <input type="text"[(ngModel)]= "currentconcert.nomconcert" name="nomconcert" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Prix concert</label>
+            <input type="number" [(ngModel)]= "currentconcert.prixconcert" name="prixconcert" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Date création</label>
+            <input type="date" [ngModel]="currentconcert.dateCreation | date: 'yyyy-MM-dd'" (ngModelChange)=" currentconcert.dateCreation= $event" name="dateCreation" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId">
+                <option *ngFor="let cat of categories" [value]="cat.idCat">
+                    {{cat.nomCat}}
+                </option>
+            </select>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" (click)="updateconcert()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>
